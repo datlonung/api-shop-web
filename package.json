@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "nodemon src/server.js",
+    "dev": "nodemon src/server.js",
     "build": "npm build"
   },
   "keywords": [],
@@ -15,6 +16,7 @@
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.6",
     "express": "^4.21.1",
+    "joi": "^17.13.3",
     "mongoose": "^8.8.3",
     "nodemon": "^3.1.7"
   }

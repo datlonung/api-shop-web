@@ -1,4 +1,5 @@
 const user = require('../models/user');
+const {apiValidation} = require('../validation/apiValidation');
 //  check if the user login already
 exports.registerUser = async (req, res) => {
     const { username, password, role } = req.body;
@@ -30,6 +31,12 @@ exports.getUserById = async (req, res) => {
 }
 // create user
 exports.createUser = async (req, res) => {
+    // Validate the request body
+    const { error } = userValidation(req.body);
+    if (error) {
+        return res.status(400).json({ message: error.details[0].message });
+    }
+
     const user = new User(req.body);
     try {
         const newUser = await user.save();
@@ -59,4 +66,3 @@ exports.deleteUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
-
