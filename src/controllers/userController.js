@@ -1,8 +1,14 @@
-const User = require('../models/user'); // Correct the import statement
-const { apiValidation } = require('../validation/apiValidation');
+const User = require('../models/user');
+const { userValidation } = require('../validation/apiValidation');
 
 // check if the user login already
 exports.registerUser = async (req, res) => {
+    // Validate the request body
+    const { error } = userValidation(req.body);
+    if (error) {
+        return res.status(400).json({ message: error.details[0].message });
+    }
+
     const { username, password, role } = req.body;
     const user = new User({ username, password, role });
     try {
@@ -35,6 +41,12 @@ exports.getUserById = async (req, res) => {
 
 // create user
 exports.createUser = async (req, res) => {
+    // Validate the request body
+    const { error } = userValidation(req.body);
+    if (error) {
+        return res.status(400).json({ message: error.details[0].message });
+    }
+
     const user = new User(req.body);
     try {
         const newUser = await user.save();
@@ -46,6 +58,12 @@ exports.createUser = async (req, res) => {
 
 // update user
 exports.updateUser = async (req, res) => {
+    // Validate the request body
+    const { error } = userValidation(req.body);
+    if (error) {
+        return res.status(400).json({ message: error.details[0].message });
+    }
+
     try {
         await User.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).json({ message: 'User updated successfully' });

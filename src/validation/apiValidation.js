@@ -1,12 +1,11 @@
-// validation data for the api 
 const Joi = require('joi');
 
 // validation for the user
 const userValidation = (data) => {
     const schema = Joi.object({
-        name: Joi.string().min(3).required(),
-        email: Joi.string().min(3).required(),
-        password: Joi.string().min(3).required()
+        username: Joi.string().min(3).required(),
+        password: Joi.string().min(6).required(),
+        role: Joi.string().required()
     });
     return schema.validate(data);
 };
