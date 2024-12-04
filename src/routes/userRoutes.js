@@ -8,9 +8,9 @@ router.get('/:id', getUserById);
 // post routes
 router.post('/', createUser);
 // put routes
-router.put('/', updateUser);
+router.put('/:id', updateUser);
 // delete routes
-router.delete('/', deleteUser);
+router.delete('/:id', deleteUser);
 
 //  register user
 router.post('/register', registerUser);
