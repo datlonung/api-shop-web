@@ -13,6 +13,11 @@ const app = express();
 app.use(bodyParser.json());
 
 
+// Middleware
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
 // Routes
 app.use('/api/products', productRoutes);
 app.use('/api/carts', cartRoutes);
