@@ -12,6 +12,11 @@ const userRoutes = require('./routes/userRoutes');
 const app = express();
 app.use(bodyParser.json());
 
+// Root route
+app.get('/', (req, res) => {
+    res.send('API is running');
+});
+
 // Routes
 app.use('/api/products', productRoutes);
 app.use('/api/carts', cartRoutes);
