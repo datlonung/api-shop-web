@@ -10,6 +10,18 @@
     {
       "src": "/api/(.*)",
       "dest": "/api/$1"
+    },
+    {
+      "src": "/products",
+      "dest": "/api/products"
+    },
+    {
+      "src": "/users",
+      "dest": "/api/users"
+    },
+    {
+      "src": "/carts",
+      "dest": "/api/carts"
     }
   ],
   "env": {
